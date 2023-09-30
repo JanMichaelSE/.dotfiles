@@ -21,15 +21,21 @@ if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
     # If not, add it to the PATH
     export PATH="$N_PREFIX/bin:$PATH"
     
+    # Define a marker for the block of text
+    marker="# N_PREFIX block"
+
     # Define the lines to be added to .bashrc
-    lines='
-export N_PREFIX="$HOME/.n"
-if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
-    export PATH="$N_PREFIX/bin:$PATH"
-fi
-'
-    # Check if the lines are already present in .bashrc, if not, append them
-    if ! grep -q "$lines" ~/.bashrc ; then
+    lines="
+    $marker
+    export N_PREFIX=\"$HOME/.n\"
+    if [[ \":\$PATH:\" != *\":\$N_PREFIX/bin:\"* ]]; then
+        export PATH=\"\$N_PREFIX/bin:\$PATH\"
+    fi
+    $marker
+    "
+
+    # Check if the marker is already present in .bashrc, if not, append the lines
+    if ! grep -q "$marker" ~/.bashrc ; then
         echo "$lines" >> ~/.bashrc
         echo "Lines were added to .bashrc"
     else
