@@ -141,3 +141,9 @@ function mkcd {
   mkdir -p "$@" && cd "$_"
 }
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Used for "n" to be used in the path (Node Package Manager)
+export N_PREFIX="$HOME/.n"
+if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
+    export PATH="$N_PREFIX/bin:$PATH"  # Added by n-install (see http://git.io/n-install-repo).
+fi
