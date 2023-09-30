@@ -10,5 +10,4 @@ apt install -y sudo &&
     apt install -y python3 &&
     apt install -y pip &&
     apt install -y vim &&
-    apt install -y fontconfig &&
-
+    apt install -y fontconfig
