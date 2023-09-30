@@ -14,13 +14,29 @@ else
 fi
 
 # This is needed for "n"
+#!/bin/bash
+
 export N_PREFIX="$HOME/.n"
 
 # Check if $N_PREFIX/bin is already in the PATH
 if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
     # If not, add it to the PATH
     export PATH="$N_PREFIX/bin:$PATH"
-    echo "PATH updated to include $N_PREFIX/bin"
+    
+    # Define the lines to be added to .bashrc
+    lines='
+export N_PREFIX="$HOME/.n"
+if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
+    export PATH="$N_PREFIX/bin:$PATH"
+fi
+'
+    # Check if the lines are already present in .bashrc, if not, append them
+    if ! grep -q "$lines" ~/.bashrc ; then
+        echo "$lines" >> ~/.bashrc
+        echo "Lines were added to .bashrc"
+    else
+        echo "Lines are already present in .bashrc"
+    fi
 else
     echo "$N_PREFIX/bin is already in the PATH"
 fi
