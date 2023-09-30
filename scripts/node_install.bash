@@ -14,8 +14,6 @@ else
 fi
 
 # This is needed for "n"
-#!/bin/bash
-
 export N_PREFIX="$HOME/.n"
 
 # Check if $N_PREFIX/bin is already in the PATH
