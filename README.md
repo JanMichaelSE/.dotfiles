@@ -1,9 +1,3 @@
-[![License Badge](https://img.shields.io/github/license/theweak1/dotfiles)](https://github.com/theweak1/dotfiles/blob/main/LICENSE)
-[![Issues Badge](https://img.shields.io/github/issues/theweak1/dotfiles)](https://github.com/theweak1/dotfiles/issues)
-[![Pull Requests Badge](https://img.shields.io/github/issues-pr/theweak1/dotfiles)](https://github.com/theweak1/dotfiles/pulls)
-[![Contributors Badge](https://img.shields.io/github/contributors/theweak1/dotfiles)](https://github.com/theweak1/dotfiles/graphs/contributors)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/theweak1/dotfiles/issues)
-
 # dotfiles
 Dotfiles are configuration files used to customize and personalize your Unix-based system. This repository contains my dotfiles for WSL and Ubuntu.
 
@@ -37,7 +31,7 @@ This will create the necessary symbolic links and set up your environment using 
 
 ### Credits
 
-Dotbot was created by [Anish Athalye][Anish]. Special thanks to him for developing such a useful tool for the dotfiles community.
+Special Thanks to my friend Lenier Ortiz for providing this repo. Also, Dotbot was created by [Anish Athalye][Anish]. Special thanks to him for developing such a useful tool for the dotfiles community.
 
 ## TODO
 - Terminal Preferences
@@ -57,11 +51,6 @@ If you fork this project, update the `gitconfig` file with your own user informa
 Additionally, while in the `Emails` section of your settings, ensure you have these options marked:
 
 ![protect email options][email-options]
-
-## License
-
-Copyright (c) Lenier Ortiz. Released under the MIT License. See [LICENSE.md][license] for details.
-
 
 [dotbot]: https://github.com/anishathalye/dotbot
 [no-reply]: ./assets/no-reply-email.png

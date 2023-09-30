@@ -13,6 +13,17 @@ else
   echo "node $(node --version) & NPM $(npm --version) already installed."
 fi
 
+# This is needed for "n"
+export N_PREFIX="$HOME/.n"
+
+# Check if $N_PREFIX/bin is already in the PATH
+if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
+    # If not, add it to the PATH
+    export PATH="$N_PREFIX/bin:$PATH"
+    echo "PATH updated to include $N_PREFIX/bin"
+else
+    echo "$N_PREFIX/bin is already in the PATH"
+fi
 
 # Function to install a global npm package if it's not already installed
 install_global_package() {
@@ -27,12 +38,8 @@ install_global_package() {
 
 # Install Global NPM Packages with conditions
 install_global_package "npm@latest"
-install_global_package "commitizen"
-install_global_package "cz-conventional-changelog"
-install_global_package "pm2"
 install_global_package "typescript"
 install_global_package "trash-cli"
-install_global_package "vercel"
 install_global_package "eslint"
 install_global_package "@johnnymorganz/stylua-bin"
 
