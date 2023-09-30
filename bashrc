@@ -122,10 +122,8 @@ function system-updater {
  	sudo apt-get clean -y &&
 	sudo apt-get autoclean -y &&
 	sudo apt-get autoremove -y --purge
-  sudo snap refresh
-	}
+}
 
-alias vim='nvim'
 alias tree='tree -I ".git|node_modules"'
 alias g='git'
 alias c='clear'
