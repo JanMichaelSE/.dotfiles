@@ -59,19 +59,33 @@ fi
 # Check if tree is installed
 echo -e "\n<<< Checking if tree is installed. >>>\n"
 if ! command -v "tree" &> /dev/null; then
-  echo "bat is not installed. Installing..."
+  echo "tree is not installed. Installing..."
   sudo apt install tree -y
 else
   echo "tree is already installed."
 fi
 
-# Check if gpt4readability is installed
-echo -e "\n<<< Checking if gpt4readability is installed. >>> \n"
-if ! command -v "gpt4readability" &> /dev/null; then
-  echo "gpt4readability is not installed. Installing..."
-  pip install GPT4Readability==0.1.4
+# Check if gh cli is installed is installed
+echo -e "\n<<< Checking if gh cli is installed. >>>\n"
+if ! command -v "gh" &> /dev/null; then
+  echo "gh cli is not installed. Installing..."
+  sudo apt install gh -y
 else
-  echo "gpt4readability is already installed."
+  echo "gh cli is already installed."
+fi
+
+# Check if lazygit is installed is installed
+echo -e "\n<<< Checking if lazygit is installed. >>>\n"
+if ! command -v "lazygit" &> /dev/null; then
+  echo "lazygit is not installed. Installing..."
+
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+  tar xf lazygit.tar.gz lazygit
+  sudo install lazygit /usr/local/bin
+
+else
+  echo "lazygit is already installed."
 fi
 
 echo -e "\n<<< software install finished. >>>\n"

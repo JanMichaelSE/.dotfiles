@@ -21,28 +21,47 @@ if [[ ":$PATH:" != *":$N_PREFIX/bin:"* ]]; then
     # If not, add it to the PATH
     export PATH="$N_PREFIX/bin:$PATH"
     
-    # Define a marker for the block of text
-    marker="# N_PREFIX block"
-
-    # Define the lines to be added to .bashrc
-    lines="
-    $marker
-    export N_PREFIX=\"$HOME/.n\"
-    if [[ \":\$PATH:\" != *\":\$N_PREFIX/bin:\"* ]]; then
-        export PATH=\"\$N_PREFIX/bin:\$PATH\"
-    fi
-    $marker
-    "
-
-    # Check if the marker is already present in .bashrc, if not, append the lines
-    if ! grep -q "$marker" ~/.bashrc ; then
-        echo "$lines" >> ~/.bashrc
-        echo "Lines were added to .bashrc"
-    else
-        echo "Lines are already present in .bashrc"
-    fi
 else
     echo "$N_PREFIX/bin is already in the PATH"
+fi
+
+# Define a marker for the block of text
+marker="# N_PREFIX block"
+
+# Define the lines to be added to .bashrc
+lines="
+$marker
+export N_PREFIX=\"$HOME/.n\"
+if [[ \":\$PATH:\" != *\":\$N_PREFIX/bin:\"* ]]; then
+    export PATH=\"\$N_PREFIX/bin:\$PATH\"
+fi
+$marker
+"
+
+# Check if the marker is already present in .bashrc, if not, append the lines
+if ! grep -q "$marker" ~/.bashrc ; then
+    echo "$lines" >> ~/.bashrc
+    echo "Lines were added to .bashrc"
+else
+    echo "Lines are already present in .bashrc"
+fi
+
+# Fish shell
+fish_marker="# N_PREFIX block"
+fish_lines="
+$fish_marker
+set -gx N_PREFIX \"$HOME/.n\"
+if not contains \"$N_PREFIX/bin\" $PATH
+    set -gx PATH \"$N_PREFIX/bin\" $PATH
+end
+$fish_marker
+"
+
+if ! grep -q "$fish_marker" ~/.config/fish/config.fish ; then
+    echo "$fish_lines" >> ~/.config/fish/config.fish
+    echo "Lines were added to Fish config"
+else
+    echo "Lines are already present in Fish config"
 fi
 
 # Function to install a global npm package if it's not already installed
@@ -61,6 +80,7 @@ install_global_package "npm@latest"
 install_global_package "typescript"
 install_global_package "trash-cli"
 install_global_package "eslint"
+install_global_package "tree-sitter-cli"
 install_global_package "@johnnymorganz/stylua-bin"
 
 echo "Global NPM Packages Installed:"

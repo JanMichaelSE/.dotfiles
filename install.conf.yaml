@@ -32,7 +32,7 @@
     ~/.tmux.conf:
     ~/.bashrc:
     ~/.gitconfig:
-    ~/.config/nvim/lua/custom/: custom
+    ~/.config/nvim/: config/nvim
     ~/.config/fish/config.fish: config.fish
     ~/.config/fish/config-linux.fish: config-linux.fish
     ~/.config/fish/config-windows.fish: config-windows.fish

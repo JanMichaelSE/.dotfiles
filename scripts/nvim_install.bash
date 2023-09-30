@@ -22,10 +22,16 @@ fi
 
 # Check if required dependencies are installed
 echo -e "\n<<< Checking if dependencies are installed. >>>\n"
-if ! command -v "clang" &> /dev/null || ! command -v "unzip" &> /dev/null; then
+if ! command -v "zig" &> /dev/null \
+  || ! command -v "unzip" \
+  || ! command -v "ripgrep" \ 
+  || ! command -v "make" \
+  || ! command -v "gcc" &> /dev/null; 
+then
   echo "Installing dependencies..."
-  sudo apt install clang unzip -y
+  sudo apt install zig unzip ripgrep make gcc -y
 fi
+
 
 # Check if font is installed
 echo -e "\n<<< Checking if the font required is installed. >>>\n"
@@ -48,16 +54,6 @@ else
   fc-cache -f -v
 
   echo "Font $FONT_NAME installed successfully."
-fi
-
-# Check if NVChad is already installed
-echo -e "\n<<< Check if nvchad is already installed. >>>\n"
-if [ -d "$NVCHAD_DIR" ]; then
-  echo "NVChad is already installed."
-else
-  echo "Installing NVChad..."
-  git clone https://github.com/NvChad/NvChad "$NVCHAD_DIR" --depth 1
-  echo "NVChad installed successfully."
 fi
 
 echo -e "\n<<< nvim setup finished. >>>\n"
