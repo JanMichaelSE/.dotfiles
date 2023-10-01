@@ -6,6 +6,7 @@
 
 - create:
     - ~/Work
+    - ~/Downloads
 
 - shell:
     - command: scripts/dependencies_install.bash

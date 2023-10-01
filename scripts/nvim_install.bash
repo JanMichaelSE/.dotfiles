@@ -24,7 +24,7 @@ fi
 echo -e "\n<<< Checking if dependencies are installed. >>>\n"
 if ! command -v "zig" &> /dev/null \
   || ! command -v "unzip" \
-  || ! command -v "ripgrep" \ 
+  || ! command -v "ripgrep" \
   || ! command -v "make" \
   || ! command -v "gcc" &> /dev/null; 
 then
