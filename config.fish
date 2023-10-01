@@ -1,7 +1,4 @@
 set fish_greeting ""
-# function fish_greeting
-# figlet "Theweak1"
-# end
 
 set -gx TERM xterm-256color
 

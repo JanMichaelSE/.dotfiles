@@ -30,7 +30,7 @@ install_global_package() {
   local package_name="$1"
   if ! npm ls -g "$package_name" &> /dev/null; then
     echo "Installing $package_name..."
-    npm install --global "$package_name"
+    sudo npm install --global "$package_name"
   else
     echo "$package_name is already installed."
   fi
