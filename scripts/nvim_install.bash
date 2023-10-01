@@ -22,14 +22,13 @@ fi
 
 # Check if required dependencies are installed
 echo -e "\n<<< Checking if dependencies are installed. >>>\n"
-if ! command -v "zig" &> /dev/null \
-  || ! command -v "unzip" \
+if ! command -v "unzip" \
   || ! command -v "ripgrep" \
   || ! command -v "make" \
   || ! command -v "gcc" &> /dev/null; 
 then
   echo "Installing dependencies..."
-  sudo apt install zig unzip ripgrep make gcc -y
+  sudo apt install unzip ripgrep make gcc -y
 fi
 
 

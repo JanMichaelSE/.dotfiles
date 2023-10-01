@@ -9,6 +9,9 @@
     - ~/Downloads
 
 - shell:
+    - command: scripts/cleanup_files.bash
+      stdout: true
+      stderr: true
     - command: scripts/dependencies_install.bash
       stdout: true
       stderr: true
