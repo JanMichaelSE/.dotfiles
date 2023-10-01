@@ -25,6 +25,9 @@
     - command: scripts/software_install.bash
       stdout: true
       stderr: true
+    - command: scripts/git_install.bash
+      stdout: true
+      stderr: true
     - command: scripts/node_install.bash
       stdout: true
       stderr: true
