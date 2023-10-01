@@ -1,6 +1,15 @@
 #!/bin/bash
 
-apt update && apt install -y sudo
+# Check if sudo is installed
+echo -e "\n<<< Checking if sudo is installed. >>>\n"
+if ! command -v "sudo" &> /dev/null; then
+    echo "sudo is not installed. Installing..."
+    apt update && apt install -y sudo
+else
+  echo "sudo is already installed."
+fi
+
+sudo apt update
 
 sudo apt install -y git &&
     sudo apt install -y unzip &&
