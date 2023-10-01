@@ -182,6 +182,9 @@ require('lazy').setup({
     end
   },
 
+  -- Tmux Navigator
+  { 'christoomey/vim-tmux-navigator' }
+
 }, {})
 
 require('core')
