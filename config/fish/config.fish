@@ -20,28 +20,43 @@ set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
-function user
-  command pass show $argv | grep "user" | cut -d " " -f2 | wl-copy
-end
-
-function email
-  command pass show $argv | grep "email" | cut -d " " -f2 | wl-copy
-end
+# Commenting out for now until I understand this better
+# function user
+#   command pass show $argv | grep "user" | cut -d " " -f2 | wl-copy
+# end
+#
+# function email
+#   command pass show $argv | grep "email" | cut -d " " -f2 | wl-copy
+# end
 
 function mkcd
     mkdir -p $argv; and cd $argv[-1]
 end
 
-# Cargo
+# Add Cargo to PATH
 set -gx PATH $HOME/.cargo/bin $PATH
 
-switch (uname)
-  case Linux
-    source (dirname (status --current-filename))/config-linux.fish
-  case '*'
-    source (dirname (status --current-filename))/config-windows.fish
+# Setup Aliases
+if type -q exa
+  alias ll "exa -lFh -g --icons"
+  alias lla "exa -lFah -g --icons"
+else
+  alias ll "ls -lFh"
+  alias lla "ls -laFh"
 end
 
+if type -q bat
+ alias cat "bat"
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+end
+
+if type -q trash
+  alias rm "trash"
+end
+
+alias echo "echo -e"
+
+# Update System
 function system-updater
   sudo apt-get update -y &&
   sudo apt-get upgrade -y &&
