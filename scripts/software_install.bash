@@ -65,4 +65,15 @@ else
   echo "tree is already installed."
 fi
 
+# Check if lazydocker is installed is installed
+echo "\n<<< Checking if lazydocker is installed. >>>\n"
+if ! command -v "lazydocker" &> /dev/null && [ ! -f "/usr/local/bin/lazydocker" ]; then
+  echo "lazydocker is not installed. Installing..."
+
+  sudo curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
+else
+  echo "lazydocker is already installed."
+fi
+
 echo -e "\n<<< software install finished. >>>\n"
