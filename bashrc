@@ -87,10 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -AlFh'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -125,15 +121,13 @@ function system-updater {
 }
 
 alias tree='tree -I ".git|node_modules"'
-alias g='git'
 alias c='clear'
 alias cat="bat"
-alias echo="echo -e"
-alias ll="exa -laFh -g --icons"
+alias ll="exa -lFh -g --icons"
+alias lla="exa -laFh -g --icons"
 alias exa='exa -laFh -g --icons'
-alias rm=trash
 
-export MANPAGER="sh -c 'col -bx | batcat  -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 function mkcd {
   mkdir -p "$@" && cd "$_"

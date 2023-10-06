@@ -8,7 +8,6 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 #aliases
-alias g git
 alias c clear
 command -qv nvim && alias vim nvim
 
@@ -47,12 +46,6 @@ if type -q bat
  alias cat "bat"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
-
-if type -q trash
-  alias rm "trash"
-end
-
-alias echo "echo -e"
 
 # Update System
 function system-updater
