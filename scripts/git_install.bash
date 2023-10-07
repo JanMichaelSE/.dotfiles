@@ -50,22 +50,3 @@ if ! command -v "delta" &> /dev/null && [ ! -f "/usr/bin/delta" ]; then
 else
     echo "delta is already installed."
 fi
-
-# Check and append the configuration to lazygit's config file
-CONFIG_PATH="$HOME/.config/lazygit/config.yml"
-CONFIG_STRING="git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never"
-
-# Convert the multi-line string into a single line
-SINGLE_LINE_CONFIG_STRING=$(echo "$CONFIG_STRING" | tr '\n' ' ')
-
-# Convert the file content into a single line and check for the presence of the string
-if ! tr '\n' ' ' < "$CONFIG_PATH" | grep -qF "$SINGLE_LINE_CONFIG_STRING"; then
-    mkdir -p "$HOME/.config/lazygit/"
-    echo "$CONFIG_STRING" >> "$CONFIG_PATH"
-    echo "Configuration added to $CONFIG_PATH."
-else
-    echo "Configuration already exists in $CONFIG_PATH."
-fi
