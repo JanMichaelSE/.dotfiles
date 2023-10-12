@@ -6,6 +6,7 @@
 
 - create:
     - ~/Work
+    - ~/Work/personal
     - ~/Downloads
 
 - shell:
@@ -32,6 +33,9 @@
       stdout: true
       stderr: true
     - command: scripts/node_install.bash
+      stdout: true
+      stderr: true
+    - command: scripts/docker_install.bash
       stdout: true
       stderr: true
     - command: scripts/application_install.bash
