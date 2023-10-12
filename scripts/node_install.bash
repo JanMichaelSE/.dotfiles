@@ -8,7 +8,7 @@ echo -e "\n<<< Running $0 >>>\n"
 
 if ! command -v "node" &> /dev/null; then
   echo "Installing Node & NPM with n..."
-  curl -L https://bit.ly/n-install | N_PREFIX=$HOME/.n bash -s  -- -yqn
+  curl -L https://bit.ly/n-install | N_PREFIX=$HOME/.n bash -s  -- -yn
 else
   echo "node $(node --version) & NPM $(npm --version) already installed."
 fi
