@@ -28,6 +28,7 @@ install_docker() {
   sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
   # Allow your user to access the Docker CLI without needing root access
+  # Note: Might need to restart system after installation for this to take affect.
   sudo usermod -aG docker $USER
 }
 
@@ -37,7 +38,7 @@ install_docker_compose() {
   sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
   # Apply executable permissions to the binary
-  sudo chmod +x /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
 }
 
 # Function to install Docker Machine
