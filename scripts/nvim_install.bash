@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-FONT_NAME="CaskaydiaCove NF"
-FONT_ZIP="CascadiaCode.zip"
-FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$FONT_ZIP"
-
-NVCHAD_DIR="$HOME/.config/nvim"
-
 echo -e "\n<<< Running $0 >>>\n"
 
 # Check if nvim is installed
@@ -33,6 +27,10 @@ fi
 
 
 # Check if font is installed
+FONT_NAME="CaskaydiaCove NF"
+FONT_ZIP="CascadiaCode.zip"
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$FONT_ZIP"
+
 echo -e "\n<<< Checking if the font required is installed. >>>\n"
 if fc-list | grep -i "$FONT_NAME" &> /dev/null; then
   echo "Font $FONT_NAME is already installed."
@@ -49,8 +47,11 @@ else
   wget -P "$DOWNLOAD_DIR" "$FONT_URL"
   sudo unzip "$DOWNLOAD_DIR/$FONT_ZIP" -d "$FONT_DIR"
 
+  # Update font permissions
+  chmod 755 "${FONT_DIR}/*"
+
   # Update font cache
-  fc-cache -f -v
+  sudo fc-cache -f -v
 
   echo "Font $FONT_NAME installed successfully."
 fi
