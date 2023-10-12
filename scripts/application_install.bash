@@ -73,11 +73,27 @@ if ! grep -q "flameshot" /usr/share/applications/*; then
     echo "flameshot is not installed. Installing..."
 
     # Update the list of available packages
-    sudo apt-get update
+    sudo apt-get update -y
 
     # Install Flameshot
     sudo apt-get install flameshot -y
 
 else
     echo "Flameshot is already installed."
+fi
+
+# Check if Notion is already installed by looking for the desktop entry
+echo -e "\n<<< Checking if Notion is installed. >>>\n"
+if ! grep -q "Notion" /usr/share/applications/*; then
+    echo "Notion is not installed. Installing..."
+
+    # Update the list of available packages
+    echo "deb [trusted=yes] https://apt.fury.io/notion-repackaged/ /" | sudo tee /etc/apt/sources.list.d/notion-repackaged.list
+    sudo apt update -y
+
+    # Install Notion
+    sudo apt install notion-app-enhanced -y
+
+else
+    echo "Notion is already installed."
 fi
