@@ -26,6 +26,10 @@
     #   stdout: true
     #   stderr: true
     #   stdin: true
+    - command: scripts/zsh_install.bash
+      stdout: true
+      stderr: true
+      stdin: true
     - command: scripts/software_install.bash
       stdout: true
       stderr: true

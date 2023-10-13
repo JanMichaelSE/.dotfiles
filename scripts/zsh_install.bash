@@ -16,7 +16,13 @@ fi
 echo -e "\n<<< checking if zap is installed >>>\n"
 if ! command -v "zap" &> /dev/null; then
   echo "Installing zap..."
+  
+  # Install zap
   zsh -c "$(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1"
+
+  # Clean up after so it uses the link one from dotfiles
+  rm -rf ~/.zshrc
+
   echo "zap installed successfully."
 else
   echo "zap is already installed."
