@@ -13,14 +13,6 @@ else
   echo "zsh is already installed."
 fi
 
-echo -e "\n<<< checking if starship is installed >>>\n"
-if ! command -v "starship"; then
-    echo "Installing starship..."
-    curl -sS https://starship.rs/install.sh | sh
-else
-    echo "starship is already installed."
-fi
-
 echo -e "\n<<< checking if zap is installed >>>\n"
 if ! command -v "zap" &> /dev/null; then
   echo "Installing zap..."
