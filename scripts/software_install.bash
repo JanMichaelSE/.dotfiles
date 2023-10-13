@@ -65,6 +65,15 @@ else
   echo "tree is already installed."
 fi
 
+# Check if fzf is installed
+echo -e "\n<<< Checking if fzf is installed. >>>\n"
+if ! command -v "fzf" &> /dev/null; then
+  echo "fzf is not installed. Installing..."
+  sudo apt install fzf -y
+else
+  echo "fzf is already installed."
+fi
+
 # Check if lazydocker is installed is installed
 echo "\n<<< Checking if lazydocker is installed. >>>\n"
 if ! command -v "lazydocker" &> /dev/null && [ ! -f "/usr/local/bin/lazydocker" ]; then
