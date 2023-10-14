@@ -43,6 +43,7 @@ install_global_package "trash-cli"
 install_global_package "eslint"
 install_global_package "tree-sitter-cli"
 install_global_package "@johnnymorganz/stylua-bin"
+install_global_package "bash-language-server"
 
 echo "Global NPM Packages Installed:"
 npm list --global --depth=0

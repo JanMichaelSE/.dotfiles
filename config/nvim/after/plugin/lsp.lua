@@ -11,6 +11,7 @@ lsp.preset({
 
 lsp.ensure_installed({
   'lua_ls',
+  'bashls',
   'marksman',
   'tsserver',
   'html',
