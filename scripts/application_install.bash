@@ -97,3 +97,25 @@ if ! grep -q "Notion" /usr/share/applications/*; then
 else
     echo "Notion is already installed."
 fi
+
+# Check if Vivaldi is installed, if not, install it
+if ! command -v vivaldi &> /dev/null
+then
+    echo "Installing Vivaldi..."
+    
+    # Download Vivaldi's official public PGP key
+    wget -qO- https://download.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
+    
+    # Add Vivaldi's APT repository
+    sudo add-apt-repository 'deb https://downloads.vivaldi.com/stable/deb/ stable main'
+    
+    # Update the package list
+    sudo apt-get update
+    
+    # Install Vivaldi
+    sudo apt-get install -y vivaldi-stable
+
+    echo "Vivaldi installed successfully."
+else
+    echo "Vivaldi is already installed."
+fi
