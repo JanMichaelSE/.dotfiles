@@ -56,6 +56,7 @@
     ~/.gitconfig: config/git/gitconfig
     ~/.config/lazygit/config.yml: config/lazygit/config.yml
     ~/.config/surfingkeys/.surfingkeys.js: config/surfingkeys/surfingkeys.js
+    ~/.config/backdrop/wallpapers/: config/backdrop/wallpapers
     # ~/.config/fish/config.fish: config/fish/config.fish
     ~/.config/bat:
       create: true
