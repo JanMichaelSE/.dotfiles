@@ -24,6 +24,9 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "romkatv/powerlevel10k"
 
+# For additional Kubectl autocompletion
+source <(kubectl completion zsh)
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
