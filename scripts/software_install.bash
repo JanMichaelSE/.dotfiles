@@ -101,4 +101,13 @@ else
   echo "go is already installed."
 fi
 
+# Check if shellcheck is installed
+echo -e "\n<<< Checking if shellcheck is installed. >>>\n"
+if ! command -v "shellcheck" &> /dev/null; then
+  echo "shellcheck is not installed. Installing..."
+  sudo apt install shellcheck -y
+else
+  echo "shellcheck is already installed."
+fi
+
 echo -e "\n<<< software install finished. >>>\n"
