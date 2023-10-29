@@ -132,7 +132,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 function mkcd {
   mkdir -p "$@" && cd "$_"
 }
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 # Used for "n" to be used in the path (Node Package Manager)
 export N_PREFIX="$HOME/.n"

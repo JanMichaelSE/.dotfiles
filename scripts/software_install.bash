@@ -6,7 +6,7 @@ echo -e "\n<<< Starting $0 >>>\n"
 echo -e "\n<<< Checking if bat is installed. >>>\n"
 if ! command -v "bat" &> /dev/null; then
   echo "bat is not installed. Installing..."
- wget -O ~/Downloads/bat-musl_0.23.0_amd64.deb https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-musl_0.23.0_amd64.deb 
+  wget -O ~/Downloads/bat-musl_0.23.0_amd64.deb https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-musl_0.23.0_amd64.deb
 if [ -e ~/Downloads/bat-musl_0.23.0_amd64.deb ]; then
   sudo dpkg -i ~/Downloads/bat-musl_0.23.0_amd64.deb
   rm ~/Downloads/bat-musl_0.23.0_amd64.deb
@@ -30,13 +30,13 @@ if command -v "exa" &> /dev/null; then
   echo "exa is already installed."
 else
   echo "exa is not installed. Attempting to install with apt..."
-  
+
   # Try to install exa using apt
   if sudo apt install exa -y; then
     echo "exa is installed via apt."
   else
     echo "exa cannot be installed with apt. Proceeding with Cargo installation..."
-    
+
     # Check if Rust and Cargo are installed
     if ! command -v "cargo" &> /dev/null; then
       echo "Installing Rust and Cargo..."
@@ -83,6 +83,22 @@ if ! command -v "lazydocker" &> /dev/null && [ ! -f "/usr/local/bin/lazydocker" 
 
 else
   echo "lazydocker is already installed."
+fi
+
+# Check if go is installed
+echo -e "\n<<< Checking if go is installed. >>>\n"
+if ! command -v "go" &> /dev/null; then
+  echo "go is not installed. Installing..."
+
+  go_version="1.21.3"  # Update this to the latest version
+  download_url="https://golang.org/dl/go${go_version}.linux-amd64.tar.gz"
+
+  # Download and install Go
+  wget $download_url -O /tmp/go.tar.gz
+  sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+
+else
+  echo "go is already installed."
 fi
 
 echo -e "\n<<< software install finished. >>>\n"

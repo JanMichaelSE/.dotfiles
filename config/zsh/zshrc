@@ -38,7 +38,8 @@ function mkcd {
 }
 
 # --- Exports ---
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
