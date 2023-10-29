@@ -110,4 +110,13 @@ else
   echo "shellcheck is already installed."
 fi
 
+# Check if fd is installed
+echo -e "\n<<< Checking if fd is installed. >>>\n"
+if ! command -v "fd" &> /dev/null; then
+  echo "fd is not installed. Installing..."
+  sudo apt install fd-find -y
+else
+  echo "fd is already installed."
+fi
+
 echo -e "\n<<< software install finished. >>>\n"
