@@ -35,3 +35,7 @@ vim.keymap.set('n', '<leader>p', '"_dP', { silent = true })
 
 -- Save using Ctrl + s like all other platforms
 vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
+
+-- Clear All Whitespace
+vim.api.nvim_set_keymap('n', '<leader>cw', [[:%s/\s\+$//e<CR>]],
+  { noremap = true, silent = true, desc = 'Clear All Trailing Whitespace.' })

@@ -57,7 +57,7 @@ lsp.on_attach(function(client, bufnr)
 
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set('n', '<leader>gr', '<cmd>Telescope lsp_references<cr>', { buffer = true })
+  vim.keymap.set('n', '<leader>gr', '<cmd>TroubleToggle lsp_references<cr>', { buffer = true })
   vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
   vim.keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
   vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
