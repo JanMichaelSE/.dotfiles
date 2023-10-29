@@ -43,6 +43,9 @@
     - command: scripts/docker_install.bash
       stdout: true
       stderr: true
+    - command: scripts/kubernetes_install.bash
+      stdout: true
+      stderr: true
     - command: scripts/application_install.bash
       stdout: true
       stderr: true
