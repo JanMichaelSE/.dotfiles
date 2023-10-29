@@ -14,6 +14,7 @@ autoload -Uz compinit
 compinit
 
 # Load Plugins
+plug "zap-zsh/vim"
 plug "joshskidmore/zsh-fzf-history-search"
 plug "aloxaf/fzf-tab"
 plug "zsh-users/zsh-autosuggestions"
