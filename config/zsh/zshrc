@@ -42,7 +42,7 @@ function mkcd {
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 

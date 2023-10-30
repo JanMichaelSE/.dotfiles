@@ -135,7 +135,7 @@ function mkcd {
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 # Used for "n" to be used in the path (Node Package Manager)
 export N_PREFIX="$HOME/.n"
