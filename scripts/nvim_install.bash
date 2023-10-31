@@ -19,10 +19,11 @@ echo -e "\n<<< Checking if dependencies are installed. >>>\n"
 if ! command -v "unzip" \
   || ! command -v "ripgrep" \
   || ! command -v "make" \
+  || ! command -v "fdfind" \
   || ! command -v "gcc" &> /dev/null; 
 then
   echo "Installing dependencies..."
-  sudo apt install unzip ripgrep make gcc -y
+  sudo apt install unzip ripgrep make gcc fd-find -y
 fi
 
 

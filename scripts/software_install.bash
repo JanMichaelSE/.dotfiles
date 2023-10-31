@@ -2,7 +2,7 @@
 
 echo -e "\n<<< Starting $0 >>>\n"
 
-#check if bat is installed
+# Check if bat is installed
 echo -e "\n<<< Checking if bat is installed. >>>\n"
 if ! command -v "bat" &> /dev/null; then
   echo "bat is not installed. Installing..."
@@ -110,13 +110,13 @@ else
   echo "shellcheck is already installed."
 fi
 
-# Check if fd is installed
-echo -e "\n<<< Checking if fd is installed. >>>\n"
-if ! command -v "fd" &> /dev/null; then
-  echo "fd is not installed. Installing..."
-  sudo apt install fd-find -y
+# Check if htop is installed
+echo -e "\n<<< Checking if htop is installed. >>>\n"
+if ! command -v "htop" &> /dev/null; then
+  echo "htop is not installed. Installing..."
+  sudo apt install htop -y
 else
-  echo "fd is already installed."
+  echo "htop is already installed."
 fi
 
 echo -e "\n<<< software install finished. >>>\n"
