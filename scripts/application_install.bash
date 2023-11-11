@@ -119,3 +119,24 @@ then
 else
     echo "Vivaldi is already installed."
 fi
+
+# Check if Slack is already installed
+if ! command -v slack &> /dev/null
+then
+    echo "Slack is not installed. Installing now."
+
+    # Add Slack's official package repository
+    wget -O - https://packagecloud.io/slacktechnologies/slack/gpgkey | sudo apt-key add -
+    echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" | sudo tee -a /etc/apt/sources.list.d/slack.list
+
+    # Update package lists
+    sudo apt-get update
+
+    # Install Slack
+    sudo apt-get install slack-desktop
+
+    echo "Slack installed successfully."
+else
+    echo "Slack is already installed."
+fi
+
