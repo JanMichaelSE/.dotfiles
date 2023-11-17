@@ -50,5 +50,5 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- Show Whitespaces
-vim.opt.list = true
-vim.opt.listchars = { trail = '·' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { trail = '·' }
