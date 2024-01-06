@@ -1,6 +1,6 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' },
@@ -15,50 +15,72 @@ return {
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
-        { 'L3MON4D3/LuaSnip' },
+        {
+            'L3MON4D3/LuaSnip',
+            dependencies = { "rafamadriz/friendly-snippets" },
+        },
     },
 
     config = function()
-        -- [LSP Setup]
         local lsp = require('lsp-zero')
 
+        -- [Mason Setup]
+        require('mason').setup({})
+        require('mason-lspconfig').setup({
+            ensure_installed = {
+                'lua_ls',
+                'bashls',
+                'marksman',
+                'tsserver',
+                'html',
+                'cssls',
+                'eslint',
+                'jsonls',
+                'prismals',
+                'tailwindcss',
+                'gopls'
+            },
+            handlers = {
+                lsp.default_setup,
+                lua_ls = function()
+                    local lua_opts = lsp.nvim_lua_ls()
+                    require('lspconfig').lua_ls.setup(lua_opts)
+                end,
+            }
+        })
+
+        -- [Auto Complete Configuration]
+        local cmp = require('cmp')
+        local cmp_format = require('lsp-zero').cmp_format()
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+        -- [TODO: INVESTIGATE WHY NOT LOADING SNIPPETS]
+        require('luasnip.loaders.from_vscode').lazy_load()
+
+        cmp.setup({
+            sources = {
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+            },
+            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            }),
+            formatting = cmp_format,
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            }
+        })
+
+        -- [LSP Setup]
         lsp.preset({
             manage_nvim_cmp = {
                 set_sources = 'recommended',
                 set_basic_mappings = true,
                 set_extra_mappings = true
             }
-        })
-
-        lsp.ensure_installed({
-            'lua_ls',
-            'bashls',
-            'marksman',
-            'tsserver',
-            'html',
-            'cssls',
-            'eslint',
-            'jsonls',
-            'prismals',
-            'tailwindcss',
-            'gopls'
-        })
-
-        -- Fix Undefined global 'vim' issue
-        lsp.nvim_workspace()
-
-
-        -- [Auto Complete Configuration]
-        local cmp = require('cmp')
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-        local cmp_mappings = lsp.defaults.cmp_mappings({
-            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        })
-
-        lsp.setup_nvim_cmp({
-            mapping = cmp_mappings
         })
 
         lsp.set_preferences({
@@ -79,13 +101,13 @@ return {
 
             vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.definition() end, opts)
+            vim.keymap.set('n', '<leader>gD', function() vim.lsp.buf.declaration() end, opts)
+            vim.keymap.set('n', '<leader>gi', function() vim.lsp.buf.implementation() end, opts)
+            vim.keymap.set('n', '<leader>go', function() vim.lsp.buf.type_definition() end, opts)
+            vim.keymap.set('n', '<leader>gs', function() vim.lsp.buf.signature_help() end, opts)
             vim.keymap.set('n', '<leader>gr', '<cmd>TroubleToggle lsp_references<cr>', { buffer = true })
-            vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-            vim.keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-            vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-            vim.keymap.set('n', '<leader>go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-            vim.keymap.set('n', '<leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-            vim.keymap.set('n', '<leader>gl', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+            vim.keymap.set('n', '<leader>se', function() vim.diagnostic.open_float() end, opts)
         end)
 
         -- (Optional) Configure lua language server for neovim
