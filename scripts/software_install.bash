@@ -101,6 +101,16 @@ else
   echo "go is already installed."
 fi
 
+# Check if delve (Go Debug Adapter) is installed
+echo -e "\n<<< Checking if delve (Go Debug Adapter) is installed. >>>\n"
+if ! command -v "dlv" &> /dev/null; then
+  echo "delve (Go Debug Adapter) is not installed. Installing..."
+  go install github.com/go-delve/delve/cmd/dlv@latest
+
+else
+  echo "delve (Go Debug Adapter) is already installed."
+fi
+
 # Check if shellcheck is installed
 echo -e "\n<<< Checking if shellcheck is installed. >>>\n"
 if ! command -v "shellcheck" &> /dev/null; then
