@@ -26,7 +26,11 @@ return {
         local lsp = require('lsp-zero')
 
         -- [Mason Setup]
-        require('mason').setup({})
+        require('mason').setup({
+            ensure_installed = {
+                "bash-debug-adapter",
+            }
+        })
         require('mason-lspconfig').setup({
             ensure_installed = {
                 'lua_ls',
@@ -55,7 +59,6 @@ return {
         local cmp_format = require('lsp-zero').cmp_format()
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-        -- [TODO: INVESTIGATE WHY NOT LOADING SNIPPETS]
         require('luasnip.loaders.from_vscode').lazy_load()
 
         cmp.setup({
