@@ -19,6 +19,9 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Sets a padding top and bottom for the cursor
+vim.o.scrolloff = 10
+
 -- Set the number of spaces that a tab is equal to. By default, this value is 8.
 vim.opt.tabstop = 4
 
