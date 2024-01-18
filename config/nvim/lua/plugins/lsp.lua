@@ -114,13 +114,25 @@ return {
             vim.keymap.set('n', '<leader>se', function() vim.diagnostic.open_float() end, opts)
         end)
 
+        -- Configure Specific LSPs
+        local lspconfig = require('lspconfig')
+
         -- (Optional) Configure lua language server for neovim
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
         lsp.setup()
 
         vim.diagnostic.config({
             virtual_text = true
+        })
+
+        -- Configure gopls
+        lspconfig.gopls.setup({
+            settings = {
+                gopls = {
+                    buildFlags = { "-tags=integration" }
+                }
+            }
         })
     end
 }
