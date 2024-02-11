@@ -30,7 +30,7 @@ if ! grep -q "discord" /usr/share/applications/*; then
     echo "discord is not installed. Installing..."
 
     # Define the URL of the DEB package
-    URL="https://dl.discordapp.net/apps/linux/0.0.31/discord-0.0.31.deb"
+    URL="https://dl.discordapp.net/apps/linux/0.0.42/discord-0.0.42.deb"
 
     # Download the DEB package
     wget -O discord.deb "$URL"
