@@ -69,7 +69,8 @@ fi
 echo -e "\n<<< Checking if fzf is installed. >>>\n"
 if ! command -v "fzf" &> /dev/null; then
   echo "fzf is not installed. Installing..."
-  sudo apt install fzf -y
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 else
   echo "fzf is already installed."
 fi

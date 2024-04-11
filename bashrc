@@ -145,3 +145,9 @@ fi
 
 # Appended Backdrop to PATH, done by install script.
 export PATH=$PATH:$HOME/.backdrop/bin
+
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/mike/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/mike/.fzf/bin"
+fi
