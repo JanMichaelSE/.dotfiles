@@ -41,9 +41,9 @@ return {
                 'cssls',
                 'eslint',
                 'jsonls',
-                'prismals',
                 'tailwindcss',
-                'gopls'
+                'gopls',
+                'terraformls',
             },
             handlers = {
                 lsp.default_setup,

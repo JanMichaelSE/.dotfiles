@@ -40,6 +40,9 @@ vim.keymap.set('n', '<C-s>', ':w<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>cw', [[:%s/\s\+$//e<CR>]],
     { noremap = true, silent = true, desc = 'Clear All Trailing Whitespace.' })
 
+-- Clear Carriage for some weird characters "^M"
+vim.api.nvim_set_keymap('n', '<leader>cc', [[:%s/\r//g<CR>]],
+    { noremap = true, silent = true, desc = 'Clear Format' })
 
 -- Go Awesome Keymap
 vim.keymap.set("n", "<leader>e", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
