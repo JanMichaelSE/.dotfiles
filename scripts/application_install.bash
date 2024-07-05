@@ -30,7 +30,7 @@ if ! grep -q "discord" /usr/share/applications/*; then
     echo "discord is not installed. Installing..."
 
     # Define the URL of the DEB package
-    URL="https://dl.discordapp.net/apps/linux/0.0.42/discord-0.0.42.deb"
+    URL="https://dl.discordapp.net/apps/linux/0.0.58/discord-0.0.58.deb"
 
     # Download the DEB package
     wget -O discord.deb "$URL"
@@ -138,5 +138,48 @@ then
     echo "Slack installed successfully."
 else
     echo "Slack is already installed."
+fi
+
+# Check if IntelliJ IDEA Ultimate is already installed by looking for the desktop entry
+echo -e "\n<<< Checking if IntelliJ IDEA Ultimate is installed. >>>\n"
+if ! grep -q "IntelliJ IDEA Ultimate" /usr/share/applications/*; then
+    echo "IntelliJ IDEA Ultimate is not installed. Installing..."
+
+    # Update package list and install dependencies
+    sudo apt update
+    sudo apt install -y wget tar
+
+    # Define IntelliJ IDEA version
+    INTELLIJ_VERSION="2024.1.4"
+    INTELLIJ_TAR="ideaIU-$INTELLIJ_VERSION.tar.gz"
+    
+    # Download IntelliJ IDEA Ultimate
+    wget "https://download.jetbrains.com/idea/$INTELLIJ_TAR"
+    
+    # Extract the downloaded tar.gz file
+    tar -xzf $INTELLIJ_TAR
+    
+    # Move IntelliJ to /opt directory
+    sudo mv idea-IU-* /opt/intellij
+    
+    # Create a symbolic link to the IntelliJ IDEA executable
+    sudo ln -s /opt/intellij/bin/idea.sh /usr/local/bin/idea
+    
+    # Clean up downloaded file
+    rm $INTELLIJ_TAR
+    
+    # Optional: Create a desktop entry for IntelliJ IDEA
+    echo "[Desktop Entry]
+    Name=IntelliJ IDEA Ultimate
+    Comment=IntelliJ
+    Exec=/opt/intellij/bin/idea.sh
+    Icon=/opt/intellij/bin/idea.png
+    Terminal=false
+    Type=Application
+    Categories=Development;IDE;" | sudo tee /usr/share/applications/intellij-idea-ultimate.desktop
+    
+    echo "IntelliJ IDEA Ultimate installation completed successfully!"
+else
+    echo "IntelliJ IDEA Ultimate is already installed."
 fi
 

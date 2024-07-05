@@ -60,3 +60,8 @@ export PATH=$PATH:$HOME/.backdrop/bin
 if [[ ! "$PATH" == */home/mike/.fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}/home/mike/.fzf/bin"
 fi
+
+# Open IntelliJ Easily
+function ide {
+    nohup idea $1 > /dev/null 2>&1 &
+}
