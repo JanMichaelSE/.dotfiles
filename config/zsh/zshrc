@@ -65,3 +65,15 @@ fi
 function ide {
     nohup idea $1 > /dev/null 2>&1 &
 }
+
+# --- Sets for Command History Management ---
+setopt APPEND_HISTORY            # Append commands to the history file, rather than overwriting it
+setopt INC_APPEND_HISTORY        # Add commands to the history file as they are typed
+setopt SHARE_HISTORY             # Share history between all sessions
+
+HISTFILE=~/.zsh_history
+HISTSIZE=100000                  # Number of commands to keep in memory
+SAVEHIST=200000                  # Number of commands to save in the history file
+
+setopt HIST_IGNORE_ALL_DUPS      # Removes all duplicate history entries
+setopt HIST_FIND_NO_DUPS         # Avoids duplicate matches during history search
