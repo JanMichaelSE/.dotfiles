@@ -44,13 +44,9 @@ echo -e "\n<<< Checking if Notion is installed. >>>\n"
 if ! grep -q "Notion" /usr/share/applications/*; then
   echo "Notion is not installed. Installing..."
 
-  # Update the list of available packages
-  echo "deb [trusted=yes] https://apt.fury.io/notion-repackaged/ /" | sudo tee /etc/apt/sources.list.d/notion-repackaged.list
-  sudo apt update -y
+  sudo snap install notion-desktop
 
-  # Install Notion
-  sudo apt install notion-app-enhanced -y
-
+  echo "Notion is now installed."
 else
   echo "Notion is already installed."
 fi
