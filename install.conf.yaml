@@ -55,6 +55,7 @@
     ~/.zshrc: config/zsh/zshrc
     ~/.p10k.zsh: config/p10k/p10k.zsh
     ~/.config/nvim/: config/nvim
+    ~/.config/ghostty/config: config/ghostty/config
     ~/.tmux.conf: config/tmux/tmux.conf
     ~/.gitconfig: config/git/gitconfig
     ~/.config/lazygit/config.yml: config/lazygit/config.yml

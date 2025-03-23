@@ -24,25 +24,6 @@ else
   echo "WhatsApp is already installed."
 fi
 
-# Check if Spotify is already installed by looking for the desktop entry
-echo -e "\n<<< Checking if spotify is installed. >>>\n"
-if ! grep -q "spotify" /usr/share/applications/*; then
-  echo "spotify is not installed. Installing..."
-
-  # Import the Spotify repository GPG key
-  curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
-  # Update the list of available packages
-  sudo apt-get update -y
-
-  # Install Spotify
-  sudo apt-get install spotify-client -y
-
-else
-  echo "Spotify is already installed."
-fi
-
 # Check if Flameshot is already installed by looking for the desktop entry
 echo -e "\n<<< Checking if flameshot is installed. >>>\n"
 if ! grep -q "flameshot" /usr/share/applications/*; then
@@ -74,45 +55,13 @@ else
   echo "Notion is already installed."
 fi
 
-# Check if IntelliJ IDEA Ultimate is already installed by looking for the desktop entry
-echo -e "\n<<< Checking if IntelliJ IDEA Ultimate is installed. >>>\n"
-if ! grep -q "IntelliJ IDEA Ultimate" /usr/share/applications/*; then
-  echo "IntelliJ IDEA Ultimate is not installed. Installing..."
+echo -e "\n<<< Checking if Ghostty Terminal is installed. >>>\n"
+if ! command -v ghostty &>/dev/null; then
+  echo "Ghostty Terminal is not installed. Snap installing now..."
 
-  # Update package list and install dependencies
-  sudo apt update
-  sudo apt install -y wget tar
+  snap install ghostty --classic
 
-  # Define IntelliJ IDEA version
-  INTELLIJ_VERSION="2024.1.4"
-  INTELLIJ_TAR="ideaIU-$INTELLIJ_VERSION.tar.gz"
-
-  # Download IntelliJ IDEA Ultimate
-  wget "https://download.jetbrains.com/idea/$INTELLIJ_TAR"
-
-  # Extract the downloaded tar.gz file
-  tar -xzf $INTELLIJ_TAR
-
-  # Move IntelliJ to /opt directory
-  sudo mv idea-IU-* /opt/intellij
-
-  # Create a symbolic link to the IntelliJ IDEA executable
-  sudo ln -s /opt/intellij/bin/idea.sh /usr/local/bin/idea
-
-  # Clean up downloaded file
-  rm $INTELLIJ_TAR
-
-  # Optional: Create a desktop entry for IntelliJ IDEA
-  echo "[Desktop Entry]
-    Name=IntelliJ IDEA Ultimate
-    Comment=IntelliJ
-    Exec=/opt/intellij/bin/idea.sh
-    Icon=/opt/intellij/bin/idea.png
-    Terminal=false
-    Type=Application
-    Categories=Development;IDE;" | sudo tee /usr/share/applications/intellij-idea-ultimate.desktop
-
-  echo "IntelliJ IDEA Ultimate installation completed successfully!"
+  echo "Ghostty Terminal built and installed successfully!"
 else
-  echo "IntelliJ IDEA Ultimate is already installed."
+  echo "Ghostty Terminal is already installed."
 fi
