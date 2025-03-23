@@ -50,3 +50,4 @@
 
 # --- CONFIGURATION ---
 shell-integration = zsh
+theme = catppuccin-frappe
