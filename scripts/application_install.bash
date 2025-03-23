@@ -24,30 +24,6 @@ else
   echo "WhatsApp is already installed."
 fi
 
-# Check if Discord is already installed by looking for the desktop entry
-echo -e "\n<<< Checking if discord is installed. >>>\n"
-if ! grep -q "discord" /usr/share/applications/*; then
-  echo "discord is not installed. Installing..."
-
-  # Define the URL of the DEB package
-  URL="https://dl.discordapp.net/apps/linux/0.0.58/discord-0.0.58.deb"
-
-  # Download the DEB package
-  wget -O discord.deb "$URL"
-
-  # Install the DEB package
-  sudo dpkg -i discord.deb
-
-  # Fix any potential missing dependencies
-  sudo apt-get install -f
-
-  # Clean up
-  rm discord.deb
-
-else
-  echo "Discord is already installed."
-fi
-
 # Check if Spotify is already installed by looking for the desktop entry
 echo -e "\n<<< Checking if spotify is installed. >>>\n"
 if ! grep -q "spotify" /usr/share/applications/*; then
@@ -96,25 +72,6 @@ if ! grep -q "Notion" /usr/share/applications/*; then
 
 else
   echo "Notion is already installed."
-fi
-
-# Check if Slack is already installed
-if ! command -v slack &>/dev/null; then
-  echo "Slack is not installed. Installing now."
-
-  # Add Slack's official package repository
-  wget -O - https://packagecloud.io/slacktechnologies/slack/gpgkey | sudo apt-key add -
-  echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" | sudo tee -a /etc/apt/sources.list.d/slack.list
-
-  # Update package lists
-  sudo apt-get update
-
-  # Install Slack
-  sudo apt-get install slack-desktop
-
-  echo "Slack installed successfully."
-else
-  echo "Slack is already installed."
 fi
 
 # Check if IntelliJ IDEA Ultimate is already installed by looking for the desktop entry
