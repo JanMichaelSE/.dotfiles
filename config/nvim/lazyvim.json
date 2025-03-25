@@ -3,6 +3,7 @@
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.editor.neo-tree",
     "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.vue"
   ],
   "install_version": 8,
