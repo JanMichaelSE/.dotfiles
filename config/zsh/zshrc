@@ -77,3 +77,10 @@ SAVEHIST=200000                  # Number of commands to save in the history fil
 
 setopt HIST_IGNORE_ALL_DUPS      # Removes all duplicate history entries
 setopt HIST_FIND_NO_DUPS         # Avoids duplicate matches during history search
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
