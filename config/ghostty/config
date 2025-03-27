@@ -51,4 +51,4 @@
 # --- CONFIGURATION ---
 shell-integration = zsh
 theme = catppuccin-frappe
-background-opacity = 0.8 
+background-opacity = 0.95
