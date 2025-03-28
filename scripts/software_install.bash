@@ -135,4 +135,16 @@ else
   echo "htop is already installed."
 fi
 
+# Check if yazi is installed
+echo -e "\n<<< Checking if yazi is installed. >>>\n"
+if ! command -v "yazi" &>/dev/null; then
+  echo "yazi is not installed. Installing..."
+  sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick -y
+
+  sudo snap install yazi --classic
+
+else
+  echo "yazi is already installed."
+fi
+
 echo -e "\n<<< software install finished. >>>\n"
