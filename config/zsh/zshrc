@@ -45,6 +45,7 @@ export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export EDITOR=nvim
 
 # Used for "n" to be used in the path (Node Package Manager)
 export N_PREFIX="$HOME/.n"
@@ -84,3 +85,13 @@ setopt HIST_FIND_NO_DUPS         # Avoids duplicate matches during history searc
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Yazi Change to Directory on q 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
