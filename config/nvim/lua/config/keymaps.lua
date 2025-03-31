@@ -30,5 +30,10 @@ vim.keymap.set("n", "<leader>p", '"_dP', { silent = true })
 -- Ctrl + Backspace to delete words
 vim.api.nvim_set_keymap("i", "<C-H>", "<C-W>", { noremap = true })
 
--- Go Awesome Keymap
--- vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
+-- Go Awesome Keymap "Check Error"
+vim.keymap.set(
+  "n",
+  "<leader>ce",
+  "oif err != nil {<CR>}<Esc>Oreturn err<Esc>",
+  { noremap = true, desc = "Golang Check Error" }
+)
