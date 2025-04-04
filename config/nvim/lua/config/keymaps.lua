@@ -5,9 +5,6 @@
 -- [[ Diagnostic keymaps ]]
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>se", function()
-  vim.diagnostic.open_float()
-end, { desc = "[S]how [E]rror Diagnostic" })
 
 -- [[ Custom Keymaps ]]
 -- Move vertically while also centering
