@@ -95,3 +95,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+function ide {
+    nohup "$HOME/Documents/Applications/ideaIU-2024.3.5/idea-IU-243.26053.27/bin/idea" "$1" > /dev/null 2>&1 &
+}
